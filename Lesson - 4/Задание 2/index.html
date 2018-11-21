@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Form</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/src/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<h1>Форма</h1>
+
+	<span id="counter">Осторожно, BigData! Почти 11 тысяч городов</span>
+
+	<form>
+		<label for="name">Имя</label>
+		<input name="name" disabled>
+		<label for="phone">Телефон</label>
+		<input name="phone" disabled>
+		<label for="email">Почта</label>
+		<input type="email" name="email" disabled>
+		<label for="city">Город</label>
+		<input list="city" required>
+		<datalist id="city">
+			<option>Идёт загрузка...</option>
+		</datalist>
+		<br><br>
+		<input type="submit" value="Отправить">
+	</form>
+
+	<script src="/src/jquery.min.js"></script>
+	<script src="/src/app.js"></script>
+</body>
+
+</html>

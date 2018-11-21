@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 30px;
+	font: 13px/1.4 Arial, sans-serif;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+p {
+	padding: 7px 0;
+}
+
+h1 {
+	font-size: 21px;
+	font-weight: normal;
+	margin: 0 0 30px;
+}
+
+h2 {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0 0 25px;
+}
+
+body {
+	background: #F6F6F6;
+}
+
+form {
+	width: 250px;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+form input, form select {
+	width: 100%;
+}

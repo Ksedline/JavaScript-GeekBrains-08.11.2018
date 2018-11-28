@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.content, .add {
+    margin: 15px;
+}
+
+.comment {
+    width: 800px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.comment p {
+    display: inline;
+    word-break: break-all;
+}
+
+.approved {
+    background: lightgreen;
+}
+
+.unapproved {
+    background: lightcoral;
+}
+
+.del, .app {
+    float: right;
+    cursor: pointer;
+    color: blue;
+}

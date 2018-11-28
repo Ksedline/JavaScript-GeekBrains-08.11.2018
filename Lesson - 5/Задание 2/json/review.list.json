@@ -1,0 +1,19 @@
+{
+    "result": 1,
+    "comments": [{
+        "id_comment": 1,
+        "text": "Текст отзыва 1"
+    }, {
+        "id_comment": 2,
+        "text": "Текст отзыва 2"
+    }, {
+        "id_comment": 3,
+        "text": "Текст отзыва 3"
+    }, {
+        "id_comment": 4,
+        "text": "Текст отзыва 4"
+    }, {
+        "id_comment": 5,
+        "text": "Текст отзыва 5"
+    }]
+}

@@ -1,0 +1,8 @@
+{
+  "result": 1,
+  "basket": [{
+    "id_product": 123,
+    "price": 100
+  }],
+  "amount": 100
+}

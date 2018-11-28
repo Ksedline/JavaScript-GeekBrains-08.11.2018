@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="external/jquery-ui/jquery-ui.css">
+	<link rel="stylesheet" href="external/slick/slick.css">
+	<link rel="stylesheet" href="external/slick/slick-theme.css">
+
+	<style>
+		header {
+			background: lightgrey;
+			height: 280px;
+		}
+
+		header h3 {
+			padding-top: 15px;
+			text-align: center;
+		}
+		
+		#goods-popular {
+			width: 600px;
+			padding-top: 20px;
+			margin: auto;
+		}
+
+		#goods-popular > div {
+			height: 200px;
+			text-align: center;
+		}
+
+		#goods-popular > div img {
+			margin: auto;
+			padding-bottom: 15px;
+		}
+
+		.wrong {
+			border-color: red!important;
+			transition: 2s;
+		}
+
+		#form {
+			margin: auto;
+			width: 200px;
+		}
+
+		#form * {
+			margin: 10px 0;
+		}
+
+	</style>
+</head>
+
+<body>
+	<header>
+		<h3>Популярный товар</h3>
+		<div id="goods-popular" class="slick-slider">
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 1</span>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 2</span>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 3</span>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 4</span>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 5</span>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 6</span>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 7</span>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 8</span>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 9</span>
+			</div>
+
+			<div>
+				<img src="https://via.placeholder.com/150" alt="Товар">
+				<span>Товар 10</span>
+			</div>
+		</div>
+	</header>
+	<hr>
+
+	<div id="dialog" title="Dialog Title">
+		<p></p>
+	</div>
+
+	<form id="form">
+		<div class="ui-widget">
+			<label for="fio">ФИО&nbsp;</label><input id="fio" />
+			<br>
+			<label for="datep">Дата Рождения&nbsp;</label><input id="datep" />
+			<input id="button" type="submit" value="Отправить">
+		</div>
+	</form>
+
+	<script type="text/javascript" src="external/jquery/jquery.js"></script>
+	<script type="text/javascript" src="external/jquery-ui/jquery-ui.js"></script>
+	<script type="text/javascript" src="external/slick/slick.min.js"></script>
+	<script>
+		function wrongify(element) {
+			element.addClass('wrong');
+			setTimeout(() => {
+				element.removeClass('wrong');
+			}, 2000);
+		}
+
+		$(document).ready(() => {
+			$('#goods-popular').slick({
+				infinite: true,
+				slidesToShow: 3,
+				slidesToScroll: 3
+			});
+
+			$('#datep').datepicker({
+				changeMonth: true,
+				changeYear: true,
+				showWeek: false,
+				monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+				dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+				firstDay: 1,
+				dateFormat: 'dd.mm.yy',
+				yearRange: '1980:2012',
+			});
+
+			$("#dialog").dialog({
+				autoOpen: false,
+				width: 400,
+				buttons: [{
+						text: 'Ок',
+						click: function() {
+							$(this).dialog('close');
+						}
+					},
+					{
+						text: 'Отмена',
+						click: function() {
+							$(this).dialog('close');
+							alert('Что значит отмена? Необходимо сделать корректно!');
+						}
+					}
+				]
+			});
+
+			$('#datep').datepicker('setDate', '01.01.2000');
+
+			$('#form').submit(event => {
+				event.preventDefault();
+				const $fio = $('#fio');
+				const $datep = $('#datep');
+
+				if (!$fio.val()) {
+					wrongify($fio);
+					$('#dialog').dialog('option', 'title', 'Ошибка');
+					$('#dialog > p').text('Введите ФИО!');
+					$('#dialog').dialog('open');
+				} else {
+					if (!$datep.val()) {
+						wrongify($datep);
+						$('#dialog').dialog('option', 'title', 'Ошибка');
+						$('#dialog > p').text('Введите дату!');
+						$('#dialog').dialog('open');
+					} else {
+						const match = $datep.val().toString();
+						if (match.match(/^\d{2}([./-])\d{2}\1\d{4}$/)) {
+							$('#dialog').dialog('option', 'title', 'Отправлено');
+							$('#dialog > p').text(`Ваше ФИО: ${$fio.val()}. Дата рождения: ${$datep.val()}`);
+							$('#dialog').dialog('open');
+						} else {
+							wrongify($datep);
+							$('#dialog').dialog('option', 'title', 'Ошибка');
+							$('#dialog > p').text('Введите корректную дату по формату дд.мм.гггг или выберите её');
+							$('#dialog').dialog('open');
+						}
+					}
+				}
+
+			});
+
+		});
+	</script>
+</body>
+
+</html>

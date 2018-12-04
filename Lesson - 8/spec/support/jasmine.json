@@ -1,0 +1,12 @@
+{
+  "spec_dir": "specs",
+  "spec_files": [
+    "appSpec.js",
+    "**/*[sS]pec.js"
+  ],
+  "helpers": [
+    "helpers/**/*.js"
+  ],
+  "oneFailurePerSpec": false,
+  "randomizeTests": true
+}

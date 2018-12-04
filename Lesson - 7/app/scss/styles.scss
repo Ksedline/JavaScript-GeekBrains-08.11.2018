@@ -1,0 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
+
+$roboto-slab: 'Roboto Slab', serif;   
+
+.testing {
+  background: lightgrey;
+  width: 7%;
+  font-size: percentage(2/1);
+  padding: percentage(1/9);
+  font-family: $roboto-slab;
+}
+
+img {
+  width: percentage(2/7);
+}
